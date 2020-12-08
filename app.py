@@ -1,12 +1,7 @@
 # sample from https://github.com/Azure-Samples/resource-manager-python-manage-resources-with-msi
 
-from msrestazure.azure_active_directory import MSIAuthentication
+from azure.identity import DefaultAzureCredential
 from azure.mgmt.resource import ResourceManagementClient, SubscriptionClient
-
-# Manage resources and resource groups - create, update and delete a resource group,
-# deploy a solution into a resource group, export an ARM template. Create, read, update
-# and delete a resource
-
 
 def run_example():
     """MSI Authentication example."""
@@ -14,7 +9,7 @@ def run_example():
     #
     # Create System Assigned MSI Authentication
     #
-    credentials = MSIAuthentication()
+    credentials = DefaultAzureCredential()
 
     #
     # Create a Subscription client, and get the subscription ID attached to that credentials.
