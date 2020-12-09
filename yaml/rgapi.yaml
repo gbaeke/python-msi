@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rgapi
+  namespace: rgapi
+  labels:
+    aadpodidbinding: rgapi
+spec:
+  containers:
+  - name: rgapi
+    image: gbaeke/rgapi
+  nodeSelector:
+    kubernetes.io/os: linux
