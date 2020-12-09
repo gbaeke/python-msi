@@ -26,6 +26,7 @@ jobs:
           images: gbaeke/rgapi
           tag-sha: true
           tag-edge: false
+          tag-latest: true 
 
       -
         name: Set up QEMU
