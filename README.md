@@ -2,15 +2,7 @@
 Python MSI Pod Identity
 
 ## Install
-* pip install virtualenv
-* virtualenv mytestenv
-* cd mytestenv
-* source bin/activate
-* pip install -r requirements.txt
+Use the Dockerfile to build the image or use ghcr.io/gbaeke/rgapi:main
 
-Last two commands not required if VS Code does the activation for you.
-
-## Issues
-With OpenSSL errors, try:
-
-sudo python -m easy_install --upgrade pyOpenSSL
+## Blog post
+https://blog.baeke.info/2020/12/09/azure-ad-pod-managed-identities-in-aks-revisited/
