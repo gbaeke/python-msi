@@ -23,7 +23,7 @@ jobs:
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@v1
         with:
-          images: gbaeke/rgapi
+          images: ghcr.io/gbaeke/rgapi
           tag-sha: true
           tag-edge: false
           tag-latest: true 
@@ -41,7 +41,7 @@ jobs:
         uses: docker/login-action@v1
         with:
           registry: ghcr.io
-          username: ${{ secrets.GHCR_USERNAME }}
+          username: ${{ github.repository_owner }}
           password: ${{ secrets.GHCR_PASSWORD }}
 
       - 
