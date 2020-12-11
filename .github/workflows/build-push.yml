@@ -57,7 +57,7 @@ jobs:
         with:
           command: monitor
           image: ${{ steps.docker_meta.outputs.tags }}
-          args: --file=Dockerfile --project-name=${{ steps.docker_meta.outputs.tags }}
+          args: --file=Dockerfile --project-name=rgapi
 
       - name: Push image
         uses: docker/build-push-action@v2
