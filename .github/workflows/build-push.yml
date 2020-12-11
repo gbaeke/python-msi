@@ -44,8 +44,22 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GHCR_PASSWORD }}
 
-      - 
-        name: Push to Docker Hub
+      - name: Build image
+        uses: docker/build-push-action@v2
+        with:
+          tags: ${{ steps.docker_meta.outputs.tags }} 
+          file: ./Dockerfile
+
+      - name: Monitor image for vulnerabilities with Snyk
+        uses: snyk/actions/docker@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK }}
+        with:
+          command: monitor
+          image: ${{ steps.docker_meta.outputs.tags }}
+          args: --file=Dockerfile --project-name=${{ steps.docker_meta.outputs.tags }}
+
+      - name: Push image
         uses: docker/build-push-action@v2
         with:
           push: true
