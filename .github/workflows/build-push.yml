@@ -56,7 +56,7 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK }}
         with:
           command: monitor
-          image: ${{ steps.docker_meta.outputs.tags }}
+          image: "ghcr.io/gbaeke/rgapi:main"
           args: --file=Dockerfile --project-name=rgapi
 
       - name: Push image
