@@ -45,6 +45,15 @@ jobs:
           tags: ${{ steps.docker_meta.outputs.tags }} 
           file: ./Dockerfile
           
+      - name: Monitor image for vulnerabilities with Snyk
+        uses: snyk/actions/docker@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK }}
+        with:
+          command: monitor
+          image: "ghcr.io/gbaeke/rgapi:main"
+          args: --file=Dockerfile --project-name=rgapi 
+          
       - name: Push image
         uses: docker/build-push-action@v2
         with:
